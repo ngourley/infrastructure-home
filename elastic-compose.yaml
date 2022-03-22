@@ -12,7 +12,7 @@ services:
     environment:
       - discovery.type=single-node
     volumes:
-      - "/home/pi/elastic_data:/usr/share/elasticsearch/data"
+      - /home/pi/elastic_data:/usr/share/elasticsearch/data
   kibana:
     container_name: kibana-01
     image: docker.elastic.co/kibana/kibana:7.17.1-arm64
