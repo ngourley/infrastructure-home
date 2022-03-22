@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  elasticsearch:
+    container_name: elasticsearch-01
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.1-arm64
+    networks:
+      - elastic
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    restart: unless-stopped
+    environment:
+      - discovery.type=single-node
+    # -v /home/pi/elastic_data:/usr/share/elasticsearch/data
+  kibana:
+    container_name: kibana-01
+      image: docker.elastic.co/kibana/kibana:7.17.1-arm64
+      networks:
+        - elastic
+      ports:
+        - "5601:5601"
+      restart: unless-stopped
+      environment:
+        - ELASTICSEARCH_HOSTS=http://elasticsearch-01:9200
