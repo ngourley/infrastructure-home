@@ -36,3 +36,11 @@ wget https://raw.githubusercontent.com/ngourley/infrastructure-home/main/elastic
 ```bash
 docker-compose -f elastic-compose.yaml up -d
 ```
+
+```mermaid
+graph TD
+    A[fa:fa-router Router <br/> 192.168.1.1] --> B[fa:fa-network-wired Unmanaged Switch]
+    B -->|Port 5| Desktop[fa:fa-desktop Primary Desktop]
+    B -->|Port 6| Netgear_8_PORT[fa:fa-network-wired Netgear Unmanaged 8-port Switch]
+    Netgear_8_PORT --> Elastic[Elastic <br/> 192.168.1.21]
+```
